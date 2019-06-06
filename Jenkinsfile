@@ -12,7 +12,7 @@ node{
      sh 'docker push thecobolt/word'
    }
    stage('Run on Dev Server'){
-     def dockerRun = 'docker run -p 8081:80 --name docker-wordpress-nginx -d eugeneware/docker-wordpress-nginx'
+     def dockerRun = 'docker run -p 80:80 --name wordpress -d thecobolt/word'
      sshagent(['ubu1611']) {
        sh "ssh -o StrictHostKeyChecking=no vagrant@10.100.0.218 ${dockerRun}"
      }
